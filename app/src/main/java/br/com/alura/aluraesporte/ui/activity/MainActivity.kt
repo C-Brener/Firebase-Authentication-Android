@@ -9,15 +9,14 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.setupWithNavController
 import br.com.alura.aluraesporte.R
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.initialize
 import kotlinx.android.synthetic.main.main_activity.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
 
     private val controlador by lazy {
         findNavController(R.id.main_activity_nav_host)
@@ -27,6 +26,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+        auth = Firebase.auth
+        auth.createUserWithEmailAndPassword("caique@testeauth.com","1234567890")
         controlador.addOnDestinationChangedListener { _,
                                                       destination,
                                                       _ ->
