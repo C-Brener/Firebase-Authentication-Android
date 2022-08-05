@@ -40,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Senha"
-            android:inputType="textPassword"
+            android:inputType="text"
             android:textSize="18sp" />
     </com.google.android.material.textfield.TextInputLayout>
 

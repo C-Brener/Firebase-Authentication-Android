@@ -6,13 +6,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import br.com.alura.aluraesporte.R
+import br.com.alura.aluraesporte.databinding.CadastroUsuarioBinding
 import br.com.alura.aluraesporte.ui.viewmodel.ComponentesVisuais
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
+import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.cadastro_usuario.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class CadastroUsuarioFragment : Fragment() {
+    private var _binding: CadastroUsuarioBinding? = null
+    private val binding get() = _binding!!
+
 
     private val controlador by lazy {
         findNavController()
@@ -24,11 +28,10 @@ class CadastroUsuarioFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(
-            R.layout.cadastro_usuario,
-            container,
-            false
-        )
+        _binding = CadastroUsuarioBinding.inflate(inflater, container, false)
+
+
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
