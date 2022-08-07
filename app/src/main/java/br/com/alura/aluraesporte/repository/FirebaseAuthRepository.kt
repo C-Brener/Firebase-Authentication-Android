@@ -1,8 +1,13 @@
 package br.com.alura.aluraesporte.repository
 
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.google.firebase.auth.FirebaseAuth
 
-class FirebaseAuthRepository {
+private const val TAG = "FirebaseAuthRepository"
+
+class FirebaseAuthRepository(private val auth: FirebaseAuth) {
 
 
     private fun logOff(auth: FirebaseAuth) {
@@ -14,7 +19,7 @@ class FirebaseAuthRepository {
         }
     }
 
-    private fun authUser(auth: FirebaseAuth, email: String, password: String): Unit {
+    private fun authUser(auth: FirebaseAuth, email: String, password: String) {
         val signInWithEmailAndPassword = auth.signInWithEmailAndPassword(email, password)
         signInWithEmailAndPassword.addOnSuccessListener {
 
@@ -22,12 +27,17 @@ class FirebaseAuthRepository {
         return Unit
     }
 
-    private fun registerUser(auth: FirebaseAuth) {
+    fun registerUser(email: String, password: String): LiveData<Boolean> {
+        val liveData = MutableLiveData(false)
         val taskResultCreateUser =
-            auth.createUserWithEmailAndPassword("caique.brener@testeauth.com", "12345678")
+            auth.createUserWithEmailAndPassword(email, password)
         taskResultCreateUser.addOnSuccessListener { AuthResultSuccess ->
+            Log.i(TAG, "Usuario cadastrado com sucesso")
+            liveData.postValue(true)
         }
         taskResultCreateUser.addOnFailureListener { AuthResultFailure ->
+            Log.i(TAG, "Erro ao cadastrar usuário", AuthResultFailure)
         }
+        return liveData
     }
 }
