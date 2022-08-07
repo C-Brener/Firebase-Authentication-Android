@@ -42,19 +42,19 @@ class CadastroUsuarioFragment : Fragment() {
             val email = cadastro_usuario_email.editText?.text.toString()
             val senha = cadastro_usuario_senha.editText?.text.toString()
             cadastroUsuarioViewModel.cadastra(email, senha).observe(viewLifecycleOwner) {
-                it?.let { cadastrado ->
-                    if (cadastrado) {
-                        Snackbar.make(view, "Cadastro realizado com Sucesso", Snackbar.LENGTH_SHORT)
+                it?.let { recurso ->
+                    if (recurso.dado) {
+                        val messageSuccess = recurso.information ?: ""
+                        Snackbar.make(view, messageSuccess, Snackbar.LENGTH_SHORT)
                             .show()
                         controlador.popBackStack()
                     } else {
-                        Snackbar.make(view, "Erro Ao cadastrar", Snackbar.LENGTH_SHORT).show()
+                        val mensagemError = recurso.information ?: "Erro não detectado"
+                        Snackbar.make(view, mensagemError, Snackbar.LENGTH_SHORT).show()
                     }
                 }
 
             }
-//
-
         }
     }
 
