@@ -76,7 +76,7 @@ class PagamentoFragment : BaseFragment() {
         if (::produtoEscolhido.isInitialized) {
             viewModel.salva(pagamento)
                 .observe(this, Observer {
-                    it?.dado?.let {
+                    it?.data?.let {
                         Toast.makeText(
                             context,
                             COMPRA_REALIZADA,

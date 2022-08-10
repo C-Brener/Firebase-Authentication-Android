@@ -87,7 +87,7 @@
         </fragment>
         <fragment
             android:id="@+id/cadastroUsuario"
-            android:name="br.com.alura.aluraesporte.ui.fragment.CadastroUsuarioFragment"
+            android:name="br.com.alura.aluraesporte.ui.fragment.RegisterUserFragment"
             android:label="Cadastro de usuário"
             tools:layout="@layout/cadastro_usuario" />
     </navigation>

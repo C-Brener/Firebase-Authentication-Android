@@ -1,3 +1,3 @@
 package br.com.alura.aluraesporte.repository
 
-class Resource<T>(val dado: T, val information: String? = null)
+class Resource<T>(val data: T, val information: String? = null)
