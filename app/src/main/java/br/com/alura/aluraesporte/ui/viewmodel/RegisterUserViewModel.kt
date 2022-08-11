@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import br.com.alura.aluraesporte.model.ResourceValue
+import br.com.alura.aluraesporte.model.User
 import br.com.alura.aluraesporte.repository.FirebaseAuthRepository
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
@@ -19,10 +20,9 @@ class RegisterUserViewModel(private val repository: FirebaseAuthRepository) : Vi
     private val _registrationResourceLiveData = MutableLiveData<ResourceValue>()
     val registrationResourceLiveData: LiveData<ResourceValue> = _registrationResourceLiveData
 
-    fun cadastra(email: String, password: String) {
+    fun cadastra(user: User) {
         val registerUser = repository.registerUser(
-            email = email,
-            password = password
+            user
         )
         handleStateRegisterUser(registerUser)
     }
@@ -33,9 +33,15 @@ class RegisterUserViewModel(private val repository: FirebaseAuthRepository) : Vi
             _registrationResourceLiveData.postValue(ResourceValue(data = true, ""))
         }
         taskResultCreateUser.addOnFailureListener { AuthResultFailure ->
-            val messageException = captureExceptionFirebase(AuthResultFailure)
-            _registrationResourceLiveData.postValue(ResourceValue(data = false, messageException))
+            val captureMessageException = captureExceptionFirebase(AuthResultFailure)
+            _registrationResourceLiveData.postValue(
+                ResourceValue(
+                    data = false,
+                    captureMessageException
+                )
+            )
         }
+
     }
 
     private fun captureExceptionFirebase(AuthResultFailure: Exception): String {

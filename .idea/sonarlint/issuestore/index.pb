@@ -5,11 +5,17 @@ H
 app/google-services.json,f/d/fd8d34b142d02ec743a8efefefd2c097961666e9
 @
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
-y
-Iapp/src/main/java/br/com/alura/aluraesporte/repository/LoginRepository.kt,9/3/93d1a72a725670e1581d2d6360dd562baffc8ddd
 }
 Mapp/src/main/java/br/com/alura/aluraesporte/repository/PagamentoRepository.kt,4/1/41a99a780a6d3432db0dc6b4750a91721113839f
 m
 =app/src/main/java/br/com/alura/aluraesporte/AppApplication.kt,7/2/72790de7aaac39a66748a7766d9f914349948caa
 w
 Gapp/src/main/java/br/com/alura/aluraesporte/ui/activity/MainActivity.kt,7/f/7fc17eef6da62f0e57da2d2a355353816bc73e04
+|
+Lapp/src/main/java/br/com/alura/aluraesporte/ui/fragment/PagamentoFragment.kt,8/a/8ae617796e646eeebf77d92dee2f36088fe4abdd
+r
+Bapp/src/main/java/br/com/alura/aluraesporte/repository/Resource.kt,7/7/7716f02624f054a75400ebc9b0f04b5ba3198da8
+P
+ app/src/main/AndroidManifest.xml,8/c/8c55c3ccc257e5907959013f99656e4c8ec3903e
+r
+Bapp/src/main/java/br/com/alura/aluraesporte/model/ResourceValue.kt,6/f/6f6818c7c7ee8ef52fbf04eccf1090b58d9f3e88

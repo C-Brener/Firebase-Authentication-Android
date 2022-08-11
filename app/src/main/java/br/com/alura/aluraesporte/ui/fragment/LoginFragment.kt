@@ -38,7 +38,9 @@ class LoginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         estadoAppViewModel.temComponentes = ComponentesVisuais()
         login_botao_logar.setOnClickListener {
-            viewModel.loga()
+            val email = login_email.editText?.text.toString()
+            val password = login_senha.editText?.text.toString()
+            viewModel.loga(email, password)
             vaiParaListaProdutos()
         }
         login_botao_cadastrar_usuario.setOnClickListener {
