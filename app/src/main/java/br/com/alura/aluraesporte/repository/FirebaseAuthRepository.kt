@@ -20,10 +20,9 @@ class FirebaseAuthRepository(private val auth: FirebaseAuth) {
         return false
     }
 
-    fun authUser(email: String, password: String) {
-        val signInWithEmailAndPassword = auth.signInWithEmailAndPassword(email, password)
-        signInWithEmailAndPassword.addOnSuccessListener {
-
+    fun authUser(user: User): Task<AuthResult> {
+        return user.run {
+            auth.signInWithEmailAndPassword(this.email, this.password)
         }
     }
 
