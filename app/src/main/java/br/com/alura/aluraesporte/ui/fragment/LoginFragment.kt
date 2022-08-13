@@ -13,6 +13,7 @@ import br.com.alura.aluraesporte.model.User
 import br.com.alura.aluraesporte.ui.viewmodel.ComponentesVisuais
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.viewmodel.LoginViewModel
+import kotlinx.android.synthetic.main.login.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -58,20 +59,47 @@ class LoginFragment : Fragment() {
 
     private fun setupClickListener() {
         binding.loginBotaoLogar.setOnClickListener {
-
-            val email = binding.loginEmail.editText?.text.toString()
-            val password = binding.loginSenha.editText?.text.toString()
-            if (email.isNotBlank() && password.isNotBlank()) {
-                viewModel.autentica(User(email, password))
-            }else{
-                Unit
-            }
+            loginButton()
         }
         binding.loginBotaoCadastrarUsuario.setOnClickListener {
-            val direcao = LoginFragmentDirections
-                .acaoLoginParaCadastroUsuario()
-            controlador.navigate(direcao)
+            navigateToRegisterUser()
         }
+
+    }
+
+    private fun navigateToRegisterUser() {
+        val direcao = LoginFragmentDirections
+            .acaoLoginParaCadastroUsuario()
+        controlador.navigate(direcao)
+    }
+
+    private fun loginButton() {
+        cleanFields()
+        val email = binding.loginEmail.editText?.text.toString()
+        val password = binding.loginSenha.editText?.text.toString()
+
+        if (verificationFields(email, password)) {
+            viewModel.autentica(User(email, password))
+        }
+    }
+
+    private fun verificationFields(email: String, password: String): Boolean {
+        var valido = true
+        if (email.isBlank()) {
+            binding.loginEmail.error = "E-mail vazio"
+            valido = false
+        }
+        if (password.isBlank()) {
+            binding.loginSenha.error = "Senha não pode ser vazia"
+            valido = false
+
+        }
+        return valido
+    }
+
+    private fun cleanFields() {
+        login_email.error = null
+        login_senha.error = null
     }
 
     private fun vaiParaListaProdutos() {

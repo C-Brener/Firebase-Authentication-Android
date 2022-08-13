@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
+import java.lang.IllegalArgumentException
 
 class LoginViewModel(
     private val firebaseAuthRepository: FirebaseAuthRepository
@@ -34,18 +35,23 @@ class LoginViewModel(
 
 
     private fun handleStateLogInUser(taskResultCreateUser: Task<AuthResult>) {
-        taskResultCreateUser.addOnCompleteListener { AuthResult ->
-            if (AuthResult.isSuccessful) {
-                _authUserResult.postValue(ResourceValue(data = true, ""))
-            } else {
-                val error = captureError(AuthResult)
-                _authUserResult.postValue(
-                    ResourceValue(
-                        data = false, information = error
+        try {
+            taskResultCreateUser.addOnCompleteListener { AuthResult ->
+                if (AuthResult.isSuccessful) {
+                    _authUserResult.postValue(ResourceValue(data = true, ""))
+                } else {
+                    val error = captureError(AuthResult)
+                    _authUserResult.postValue(
+                        ResourceValue(
+                            data = false, information = error
+                        )
                     )
-                )
+                }
             }
+        }catch (e:IllegalArgumentException){
+            _authUserResult.postValue(ResourceValue(false,"Email e senha não podem ser vazio"))
         }
+
     }
 
     private fun captureError(AuthResult: Task<AuthResult>): String {

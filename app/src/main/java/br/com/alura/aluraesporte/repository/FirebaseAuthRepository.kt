@@ -13,7 +13,7 @@ class FirebaseAuthRepository(private val auth: FirebaseAuth) {
     }
 
     fun verifyUser(): Boolean {
-        var verification = auth.currentUser
+        val verification = auth.currentUser
         if (verification != null) {
             return true
         }
@@ -30,6 +30,14 @@ class FirebaseAuthRepository(private val auth: FirebaseAuth) {
         return user.run {
             auth.createUserWithEmailAndPassword(this.email, this.password)
         }
+    }
+
+    fun captureInfoUser():String{
+        val user = auth.currentUser?.email
+        user?.let {
+            return it
+        }
+        return "Usuário não encontrado"
     }
 
 

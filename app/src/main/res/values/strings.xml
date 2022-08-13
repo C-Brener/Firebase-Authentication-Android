@@ -13,4 +13,8 @@
     <string name="password">Senha</string>
     <string name="password_confirm">Confirmar senha</string>
     <string name="e_mail">E-mail</string>
+    <string name="minha_conta">Minha Conta</string>
+    <string name="pagamentos">Pagamentos</string>
+    <string name="produtos">Produtos</string>
+    <string name="email_do_usuario_">Email do usuario é: %s</string>
 </resources>

@@ -3,8 +3,6 @@ X
 (gradle/wrapper/gradle-wrapper.properties,f/b/fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 H
 app/google-services.json,f/d/fd8d34b142d02ec743a8efefefd2c097961666e9
-@
-app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 }
 Mapp/src/main/java/br/com/alura/aluraesporte/repository/PagamentoRepository.kt,4/1/41a99a780a6d3432db0dc6b4750a91721113839f
 m
@@ -19,7 +17,15 @@ r
 Bapp/src/main/java/br/com/alura/aluraesporte/model/ResourceValue.kt,6/f/6f6818c7c7ee8ef52fbf04eccf1090b58d9f3e88
 y
 Iapp/src/main/java/br/com/alura/aluraesporte/repository/LoginRepository.kt,9/3/93d1a72a725670e1581d2d6360dd562baffc8ddd
-w
-Gapp/src/main/java/br/com/alura/aluraesporte/ui/fragment/BaseFragment.kt,5/0/50e6c5c3753654508a57edad82c91f8b83682530
 i
 9app/src/main/java/br/com/alura/aluraesporte/model/User.kt,7/0/708104aa58669eddc229529623a8b4d978e8ec8c
+Å
+Qapp/src/main/java/br/com/alura/aluraesporte/ui/viewmodel/RegisterUserViewModel.kt,e/f/ef7b7884c49b048c634192271bb05b9f040c6e95
+
+Oapp/src/main/java/br/com/alura/aluraesporte/ui/fragment/RegisterUserFragment.kt,4/7/47d1923bd6233b3234675b43fb40006052b7b4ac
+<
+build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
+w
+Gapp/src/main/java/br/com/alura/aluraesporte/ui/activity/MainActivity.kt,7/f/7fc17eef6da62f0e57da2d2a355353816bc73e04
+Ä
+Papp/src/main/java/br/com/alura/aluraesporte/ui/fragment/ListaProdutosFragment.kt,a/7/a7fb5a97c14a4a82f3e866a4c89df426cf14075b
