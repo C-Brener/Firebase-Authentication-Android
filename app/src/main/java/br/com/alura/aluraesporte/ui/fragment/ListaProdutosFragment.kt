@@ -1,9 +1,10 @@
 package br.com.alura.aluraesporte.ui.fragment
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout.VERTICAL
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import br.com.alura.aluraesporte.R
@@ -27,21 +28,12 @@ class ListaProdutosFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        buscaProdutos()
     }
-
-    private fun buscaProdutos() {
-        viewModel.buscaTodos().observe(this, Observer { produtosEncontrados ->
-            produtosEncontrados?.let {
-                adapter.atualiza(it)
-            }
-        })
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        viewModel.buscaTodosNoFirebase()
         return inflater.inflate(
             R.layout.lista_produtos,
             container,
@@ -55,6 +47,7 @@ class ListaProdutosFragment : BaseFragment() {
             appBar = true,
             bottomNavigation = true)
         configuraRecyclerView()
+        setupObserver()
     }
 
     private fun configuraRecyclerView() {
@@ -64,6 +57,18 @@ class ListaProdutosFragment : BaseFragment() {
             vaiParaDetalhesDoProduto(produtoSelecionado.id)
         }
         lista_produtos_recyclerview.adapter = adapter
+    }
+
+    private fun buscaProdutos() {
+        viewModel.buscaTodosNoFirebase()
+    }
+
+    private fun setupObserver() {
+        viewModel.listProduct.observe(viewLifecycleOwner) { produtosEncontrados ->
+            produtosEncontrados?.let {
+                adapter.atualiza(it)
+            }
+        }
     }
 
     private fun vaiParaDetalhesDoProduto(produtoId: Long) {

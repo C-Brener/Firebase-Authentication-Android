@@ -23,5 +23,7 @@ i
 Qapp/src/main/java/br/com/alura/aluraesporte/ui/viewmodel/RegisterUserViewModel.kt,e/f/ef7b7884c49b048c634192271bb05b9f040c6e95
 
 Oapp/src/main/java/br/com/alura/aluraesporte/ui/fragment/RegisterUserFragment.kt,4/7/47d1923bd6233b3234675b43fb40006052b7b4ac
-€
-Papp/src/main/java/br/com/alura/aluraesporte/ui/fragment/ListaProdutosFragment.kt,a/7/a7fb5a97c14a4a82f3e866a4c89df426cf14075b
+<
+build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
+@
+app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
