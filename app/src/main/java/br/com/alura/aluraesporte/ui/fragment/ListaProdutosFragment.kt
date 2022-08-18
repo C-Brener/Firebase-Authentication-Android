@@ -33,7 +33,7 @@ class ListaProdutosFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel.buscaTodosNoFirebase()
+        viewModel.searchDataInFirebase()
         return inflater.inflate(
             R.layout.lista_produtos,
             container,
@@ -60,7 +60,7 @@ class ListaProdutosFragment : BaseFragment() {
     }
 
     private fun buscaProdutos() {
-        viewModel.buscaTodosNoFirebase()
+        viewModel.searchDataInFirebase()
     }
 
     private fun setupObserver() {

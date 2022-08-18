@@ -5,8 +5,6 @@ H
 app/google-services.json,f/d/fd8d34b142d02ec743a8efefefd2c097961666e9
 }
 Mapp/src/main/java/br/com/alura/aluraesporte/repository/PagamentoRepository.kt,4/1/41a99a780a6d3432db0dc6b4750a91721113839f
-m
-=app/src/main/java/br/com/alura/aluraesporte/AppApplication.kt,7/2/72790de7aaac39a66748a7766d9f914349948caa
 |
 Lapp/src/main/java/br/com/alura/aluraesporte/ui/fragment/PagamentoFragment.kt,8/a/8ae617796e646eeebf77d92dee2f36088fe4abdd
 r
