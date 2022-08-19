@@ -25,16 +25,8 @@ w
 Gapp/src/main/java/br/com/alura/aluraesporte/ui/fragment/BaseFragment.kt,5/0/50e6c5c3753654508a57edad82c91f8b83682530
 x
 Happ/src/main/java/br/com/alura/aluraesporte/ui/fragment/LoginFragment.kt,d/e/de6fb553265b4e3031c6fe36c2a239f3887001eb
-{
-Kapp/src/main/java/br/com/alura/aluraesporte/repository/ProdutoRepository.kt,c/9/c9fcf6b0fe1b3283b358d12dd0e35e4417fd45ce
-m
-=app/src/main/java/br/com/alura/aluraesporte/AppApplication.kt,7/2/72790de7aaac39a66748a7766d9f914349948caa
-l
-<app/src/main/java/br/com/alura/aluraesporte/di/AppModules.kt,8/b/8b77846b36251ac8e921a5c34744d53ab1096882
 l
 <app/src/main/java/br/com/alura/aluraesporte/model/Produto.kt,6/2/628615594113dc126f88c4882a223bb7988a1667
-}
-Mapp/src/main/java/br/com/alura/aluraesporte/ui/viewmodel/ProdutosViewModel.kt,a/d/ad044ce9ca9dd571f851049824bcbac04e02a5d8
 @
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 <

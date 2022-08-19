@@ -12,7 +12,6 @@ import br.com.alura.aluraesporte.ui.recyclerview.adapter.ProdutosAdapter
 import br.com.alura.aluraesporte.ui.viewmodel.ComponentesVisuais
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.viewmodel.ProdutosViewModel
-import kotlinx.android.synthetic.main.cadastro_usuario.*
 import kotlinx.android.synthetic.main.lista_produtos.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -34,7 +33,6 @@ class ListaProdutosFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        viewModel.searchDataInFirebase()
         return inflater.inflate(
             R.layout.lista_produtos,
             container,
@@ -46,10 +44,17 @@ class ListaProdutosFragment : BaseFragment() {
         super.onViewCreated(view, savedInstanceState)
         estadoAppViewModel.temComponentes = ComponentesVisuais(
             appBar = true,
-            bottomNavigation = true)
+            bottomNavigation = true
+        )
         configuraRecyclerView()
         setupClickListener()
         setupObserver()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.searchDataInFirebase()
+
     }
 
     private fun configuraRecyclerView() {
@@ -59,10 +64,6 @@ class ListaProdutosFragment : BaseFragment() {
             vaiParaDetalhesDoProduto(produtoSelecionado.id)
         }
         lista_produtos_recyclerview.adapter = adapter
-    }
-
-    private fun buscaProdutos() {
-        viewModel.searchDataInFirebase()
     }
 
     private fun setupObserver() {

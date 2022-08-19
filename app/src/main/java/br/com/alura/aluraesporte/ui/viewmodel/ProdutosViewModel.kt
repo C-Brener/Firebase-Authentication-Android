@@ -3,6 +3,7 @@ package br.com.alura.aluraesporte.ui.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import br.com.alura.aluraesporte.mapper.ProductDocumentFireStore
 import br.com.alura.aluraesporte.model.Produto
 import br.com.alura.aluraesporte.repository.ProdutoRepository
 import com.google.android.gms.tasks.Task
@@ -39,14 +40,5 @@ class ProdutosViewModel(private val repository: ProdutoRepository) :
         }
     }
 
-    private class ProductDocumentFireStore(
-        val nome: String = "",
-        val preço: String = "0.0"
-    ) {
-        fun mapperForProductModel(): Produto = Produto(
-            nome = nome,
-            preco = BigDecimal(preço)
-        )
-    }
 
 
