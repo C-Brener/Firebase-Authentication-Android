@@ -5,9 +5,7 @@ import br.com.alura.aluraesporte.database.dao.ProdutoDAO
 import br.com.alura.aluraesporte.mapper.ProductDocumentFireStore
 import br.com.alura.aluraesporte.model.Produto
 import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.DocumentReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.*
 
 class ProdutoRepository(private val dao: ProdutoDAO, private val firestore: FirebaseFirestore) {
 
@@ -22,8 +20,7 @@ class ProdutoRepository(private val dao: ProdutoDAO, private val firestore: Fire
 
     }
 
-    fun searchDatabaseInFirestore(): Task<QuerySnapshot> {
+    fun searchDataInFirestore(): CollectionReference {
         return firestore.collection("produtos")
-            .get()
     }
 }

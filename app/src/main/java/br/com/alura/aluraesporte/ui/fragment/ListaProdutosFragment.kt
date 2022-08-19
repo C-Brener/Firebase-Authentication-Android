@@ -28,6 +28,8 @@ class ListaProdutosFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.searchDataInFirebase()
+
     }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,12 +51,6 @@ class ListaProdutosFragment : BaseFragment() {
         configuraRecyclerView()
         setupClickListener()
         setupObserver()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        viewModel.searchDataInFirebase()
-
     }
 
     private fun configuraRecyclerView() {

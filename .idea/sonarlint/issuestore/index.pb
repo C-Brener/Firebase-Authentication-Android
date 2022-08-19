@@ -31,3 +31,11 @@ l
 app/build.gradle,f/4/f4a01d6a4fcb971362ec00a83903fd3902f52164
 <
 build.gradle,f/0/f07866736216be0ee2aba49e392191aeae700a35
+m
+=app/src/main/java/br/com/alura/aluraesporte/AppApplication.kt,7/2/72790de7aaac39a66748a7766d9f914349948caa
+w
+Gapp/src/main/java/br/com/alura/aluraesporte/ui/activity/MainActivity.kt,7/f/7fc17eef6da62f0e57da2d2a355353816bc73e04
+l
+<app/src/main/java/br/com/alura/aluraesporte/di/AppModules.kt,8/b/8b77846b36251ac8e921a5c34744d53ab1096882
+~
+Napp/src/main/java/br/com/alura/aluraesporte/mapper/ProductDocumentFireStore.kt,d/1/d19d2743b869bfa5166c333e4df26dadf0abda47

@@ -6,10 +6,8 @@ import androidx.lifecycle.ViewModel
 import br.com.alura.aluraesporte.mapper.ProductDocumentFireStore
 import br.com.alura.aluraesporte.model.Produto
 import br.com.alura.aluraesporte.repository.ProdutoRepository
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.QuerySnapshot
+import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.toObject
-import java.math.BigDecimal
 
 class ProdutosViewModel(private val repository: ProdutoRepository) :
     ViewModel() {
@@ -19,13 +17,13 @@ class ProdutosViewModel(private val repository: ProdutoRepository) :
 
 
     fun searchDataInFirebase() {
-        getResultsSearchData(repository.searchDatabaseInFirestore())
+        handleResultsSearchData(repository.searchDataInFirestore())
     }
 
-    private fun getResultsSearchData(query: Task<QuerySnapshot>) {
+    private fun handleResultsSearchData(query: CollectionReference) {
         val list: MutableList<Produto> = mutableListOf()
-        query.addOnSuccessListener {
-            it.let { querySnapshot ->
+        query.addSnapshotListener { value, error ->
+            value?.let { querySnapshot ->
                 for (document in querySnapshot) {
                     val produto = document.toObject<ProductDocumentFireStore>()
                     produto.let { productDocumentNotNull ->
@@ -33,9 +31,10 @@ class ProdutosViewModel(private val repository: ProdutoRepository) :
                             productDocumentNotNull.mapperForProductModel()
                         )
                     }
-                    }
                 }
-                _listProduct.postValue(list)
+            }
+
+            _listProduct.postValue(list)
             }
         }
     }
