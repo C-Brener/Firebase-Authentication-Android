@@ -12,6 +12,7 @@ import br.com.alura.aluraesporte.ui.recyclerview.adapter.ProdutosAdapter
 import br.com.alura.aluraesporte.ui.viewmodel.ComponentesVisuais
 import br.com.alura.aluraesporte.ui.viewmodel.EstadoAppViewModel
 import br.com.alura.aluraesporte.ui.viewmodel.ProdutosViewModel
+import kotlinx.android.synthetic.main.cadastro_usuario.*
 import kotlinx.android.synthetic.main.lista_produtos.*
 import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.sharedViewModel
@@ -47,6 +48,7 @@ class ListaProdutosFragment : BaseFragment() {
             appBar = true,
             bottomNavigation = true)
         configuraRecyclerView()
+        setupClickListener()
         setupObserver()
     }
 
@@ -68,6 +70,12 @@ class ListaProdutosFragment : BaseFragment() {
             produtosEncontrados?.let {
                 adapter.atualiza(it)
             }
+        }
+    }
+
+    private fun setupClickListener() {
+        lista_produtos_fab.setOnClickListener {
+            controlador.navigate(ListaProdutosFragmentDirections.actionListaProdutosToFormularioProdutoFragment())
         }
     }
 
