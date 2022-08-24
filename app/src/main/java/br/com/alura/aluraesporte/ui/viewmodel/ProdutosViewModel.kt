@@ -15,7 +15,6 @@ class ProdutosViewModel(private val repository: ProdutoRepository) :
     private val _listProduct: MutableLiveData<List<Produto>> = MutableLiveData<List<Produto>>()
     val listProduct: LiveData<List<Produto>> = _listProduct
 
-
     fun searchDataInFirebase() {
         handleResultsSearchData(repository.searchDataInFirestore())
     }
@@ -32,12 +31,13 @@ class ProdutosViewModel(private val repository: ProdutoRepository) :
                         )
                     }
                 }
-            }
-
-            _listProduct.postValue(list)
+                _listProduct.postValue(list)
             }
         }
     }
+
+}
+
 
 
 

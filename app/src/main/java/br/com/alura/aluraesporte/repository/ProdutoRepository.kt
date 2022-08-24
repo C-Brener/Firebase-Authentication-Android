@@ -1,26 +1,33 @@
 package br.com.alura.aluraesporte.repository
 
+import android.util.Log
 import androidx.lifecycle.LiveData
-import br.com.alura.aluraesporte.database.dao.ProdutoDAO
 import br.com.alura.aluraesporte.mapper.ProductDocumentFireStore
 import br.com.alura.aluraesporte.model.Produto
-import com.google.android.gms.tasks.Task
-import com.google.firebase.firestore.*
+import com.google.firebase.firestore.CollectionReference
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
 
-class ProdutoRepository(private val dao: ProdutoDAO, private val firestore: FirebaseFirestore) {
+private const val collectionFireStore = "produtos"
 
-    fun buscaTodos(): LiveData<List<Produto>> = dao.buscaTodos()
+class ProdutoRepository(private val firestore: FirebaseFirestore) {
 
-    fun buscaPorId(id: Long): LiveData<Produto> = dao.buscaPorId(id)
+    fun buscaPorId(id: Long): LiveData<Produto> =
+        TODO("Não foi implementada a busca do produto por ID")
 
-    fun savedInDatabaseInFirestore(produto:Produto) : Task<DocumentReference> {
-        val produtoDocumento = ProductDocumentFireStore(nome = produto.nome, preço = produto.preco.toString())
-       return firestore.collection("produtos")
-            .add(produtoDocumento)
+    fun savedInDatabaseInFirestore(produto: Produto): DocumentReference {
+        val produtoDocumento =
+            ProductDocumentFireStore(nome = produto.nome, preço = produto.preco.toString())
+        val documento = firestore.collection(collectionFireStore)
+            .document()
+        documento.set(produtoDocumento)
+        Log.i("Gerando ID localmente", documento.id)
 
+        return documento
     }
 
     fun searchDataInFirestore(): CollectionReference {
-        return firestore.collection("produtos")
+        return firestore.collection(collectionFireStore)
     }
+
 }

@@ -57,7 +57,8 @@ class ListaProdutosFragment : BaseFragment() {
         val divisor = DividerItemDecoration(context, VERTICAL)
         lista_produtos_recyclerview.addItemDecoration(divisor)
         adapter.onItemClickListener = { produtoSelecionado ->
-            vaiParaDetalhesDoProduto(produtoSelecionado.id)
+//            vaiParaDetalhesDoProduto(produtoSelecionado.id)
+            TODO("Precisa do id do firestore para acessar os detalhes d produto.")
         }
         lista_produtos_recyclerview.adapter = adapter
     }
