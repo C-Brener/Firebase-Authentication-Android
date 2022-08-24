@@ -7,7 +7,8 @@ class ProductDocumentFireStore(
     val nome: String = "",
     val preço: String = "0.0"
 ) {
-    fun mapperForProductModel(): Produto = Produto(
+    fun mapperForProductModel(id:String): Produto = Produto(
+        id = id,
         nome = nome,
         preco = BigDecimal(preço)
     )

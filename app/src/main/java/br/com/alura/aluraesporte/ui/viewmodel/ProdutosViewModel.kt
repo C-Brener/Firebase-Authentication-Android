@@ -27,7 +27,7 @@ class ProdutosViewModel(private val repository: ProdutoRepository) :
                     val produto = document.toObject<ProductDocumentFireStore>()
                     produto.let { productDocumentNotNull ->
                         list.add(
-                            productDocumentNotNull.mapperForProductModel()
+                            productDocumentNotNull.mapperForProductModel(document.id)
                         )
                     }
                 }
