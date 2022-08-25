@@ -42,6 +42,16 @@ class DetalhesProdutoFragment : BaseFragment() {
         super.onCreateOptionsMenu(menu, inflater)
     }
 
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_detalhes_produto_altera -> {
+                DetalhesProdutoFragmentDirections.actionDetalhesProdutoToFormularioProduto(produtoId)
+                    .let(controlador::navigate)
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         estadoAppViewModel.temComponentes = ComponentesVisuais(appBar = true)

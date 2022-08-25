@@ -37,6 +37,10 @@ class FormularioProdutoViewModel(private val firestoreDataBase: ProdutoRepositor
 //            _getTaskStatus.postValue(false)
 //        }
     }
+
+    fun buscaPorId(id: String):LiveData<Produto> {
+        return firestoreDataBase.buscaPorId(id)
+    }
 }
 
 

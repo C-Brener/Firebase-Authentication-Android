@@ -30,8 +30,11 @@ class ProdutoRepository(private val firestore: FirebaseFirestore) {
     fun savedInDatabaseInFirestore(produto: Produto): DocumentReference {
         val produtoDocumento =
             ProductDocumentFireStore(nome = produto.nome, preço = produto.preco.toString())
-        val documento = firestore.collection(collectionFireStore)
-            .document()
+        val colecao = firestore.collection(collectionFireStore)
+        val documento = produto.id?.let {
+            colecao.document(it)
+        } ?: colecao.document()
+
         documento.set(produtoDocumento)
         Log.i("Gerando ID localmente", documento.id)
 
