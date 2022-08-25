@@ -45,9 +45,5 @@ l
 Napp/src/main/java/br/com/alura/aluraesporte/ui/viewmodel/PagamentoViewModel.kt,8/6/868513529de953b183b6acaff0aca95be23adfad
 |
 Lapp/src/main/java/br/com/alura/aluraesporte/ui/fragment/PagamentoFragment.kt,8/a/8ae617796e646eeebf77d92dee2f36088fe4abdd
-€
-Papp/src/main/java/br/com/alura/aluraesporte/ui/fragment/ListaProdutosFragment.kt,a/7/a7fb5a97c14a4a82f3e866a4c89df426cf14075b
 }
 Mapp/src/main/java/br/com/alura/aluraesporte/ui/viewmodel/ProdutosViewModel.kt,a/d/ad044ce9ca9dd571f851049824bcbac04e02a5d8
-„
-Tapp/src/main/java/br/com/alura/aluraesporte/ui/viewmodel/DetalhesProdutoViewModel.kt,a/9/a9c7ca95def2ab2d984a5f38529676638ac29602

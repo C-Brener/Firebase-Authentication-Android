@@ -28,7 +28,7 @@ class ListaProdutosFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel.searchDataInFirebase()
+
 
     }
     override fun onCreateView(
@@ -44,6 +44,7 @@ class ListaProdutosFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.searchDataInFirebase()
         estadoAppViewModel.temComponentes = ComponentesVisuais(
             appBar = true,
             bottomNavigation = true
