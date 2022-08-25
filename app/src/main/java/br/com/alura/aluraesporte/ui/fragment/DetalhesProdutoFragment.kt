@@ -44,17 +44,21 @@ class DetalhesProdutoFragment : BaseFragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_detalhes_produto_altera -> {
-                DetalhesProdutoFragmentDirections.actionDetalhesProdutoToFormularioProduto(produtoId)
-                    .let(controlador::navigate)
-            }
-            R.id.menu_detalhes_produto_remove -> {
-                viewModel.remove().observe(viewLifecycleOwner) {
-                    controlador.popBackStack()
-                }
-            }
+            R.id.menu_detalhes_produto_altera -> goToForm()
+            R.id.menu_detalhes_produto_remove -> removeProduct()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun removeProduct() {
+        viewModel.remove().observe(viewLifecycleOwner) {
+            controlador.popBackStack()
+        }
+    }
+
+    private fun goToForm() {
+        DetalhesProdutoFragmentDirections.actionDetalhesProdutoToFormularioProduto(produtoId)
+            .let(controlador::navigate)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

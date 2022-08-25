@@ -62,11 +62,15 @@ class FormularioProdutoFragment : BaseFragment() {
 
     private fun setupClickListener() {
         formulario_produto_botao_salva.setOnClickListener {
-            val nome = formulario_produto_campo_nome.editText?.text.toString()
-            val preco = formulario_produto_campo_preco.editText?.text.toString()
-            val produto = Produto(id = produtoId, nome = nome, preco = BigDecimal(preco))
-            viewModel.salva(produto)
+            saveFireStore()
         }
+    }
+
+    private fun saveFireStore() {
+        val nome = formulario_produto_campo_nome.editText?.text.toString()
+        val preco = formulario_produto_campo_preco.editText?.text.toString()
+        val produto = Produto(id = produtoId, nome = nome, preco = BigDecimal(preco))
+        viewModel.salva(produto)
     }
 
     private fun setupObserver() {
