@@ -4,10 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/cadastro_usuario.xml" value="0.22916666666666666" />
+        <entry key="app/src/main/res/layout/detalhes_produto.xml" value="0.1431159420289855" />
+        <entry key="app/src/main/res/layout/fragment_formulario_produto.xml" value="0.22916666666666666" />
         <entry key="app/src/main/res/layout/fragment_minha_conta.xml" value="0.16041666666666668" />
+        <entry key="app/src/main/res/layout/lista_produtos.xml" value="0.18" />
         <entry key="app/src/main/res/layout/login.xml" value="0.22916666666666666" />
+        <entry key="app/src/main/res/menu/menu_detalhes_produto.xml" value="0.171875" />
         <entry key="app/src/main/res/menu/menu_principal.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/menu_principal_bottom_navigation.xml" value="0.16041666666666668" />
+        <entry key="app/src/main/res/menu/menu_principal_bottom_navigation.xml" value="0.1" />
       </map>
     </option>
   </component>

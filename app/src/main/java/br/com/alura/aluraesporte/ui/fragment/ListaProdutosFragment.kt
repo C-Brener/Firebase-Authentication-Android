@@ -1,9 +1,10 @@
 package br.com.alura.aluraesporte.ui.fragment
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout.VERTICAL
-import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import br.com.alura.aluraesporte.R
@@ -27,17 +28,9 @@ class ListaProdutosFragment : BaseFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        buscaProdutos()
-    }
 
-    private fun buscaProdutos() {
-        viewModel.buscaTodos().observe(this, Observer { produtosEncontrados ->
-            produtosEncontrados?.let {
-                adapter.atualiza(it)
-            }
-        })
-    }
 
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,22 +44,42 @@ class ListaProdutosFragment : BaseFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        viewModel.searchDataInFirebase()
         estadoAppViewModel.temComponentes = ComponentesVisuais(
             appBar = true,
-            bottomNavigation = true)
+            bottomNavigation = true
+        )
         configuraRecyclerView()
+        setupClickListener()
+        setupObserver()
     }
 
     private fun configuraRecyclerView() {
         val divisor = DividerItemDecoration(context, VERTICAL)
         lista_produtos_recyclerview.addItemDecoration(divisor)
         adapter.onItemClickListener = { produtoSelecionado ->
-            vaiParaDetalhesDoProduto(produtoSelecionado.id)
+            produtoSelecionado.id?.let {
+                vaiParaDetalhesDoProduto(it)
+            }
         }
         lista_produtos_recyclerview.adapter = adapter
     }
 
-    private fun vaiParaDetalhesDoProduto(produtoId: Long) {
+    private fun setupObserver() {
+        viewModel.listProduct.observe(viewLifecycleOwner) { produtosEncontrados ->
+            produtosEncontrados?.let {
+                adapter.atualiza(it)
+            }
+        }
+    }
+
+    private fun setupClickListener() {
+        lista_produtos_fab.setOnClickListener {
+            controlador.navigate(ListaProdutosFragmentDirections.actionListaProdutosToFormularioProdutoFragment())
+        }
+    }
+
+    private fun vaiParaDetalhesDoProduto(produtoId: String) {
         val direcao = ListaProdutosFragmentDirections
             .acaoListaProdutosParaDetalhesProduto(produtoId)
         controlador.navigate(direcao)

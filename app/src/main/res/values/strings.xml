@@ -17,4 +17,5 @@
     <string name="pagamentos">Pagamentos</string>
     <string name="produtos">Produtos</string>
     <string name="email_do_usuario_">Email do usuario é: %s</string>
+    <string name="add_itens">Add Itens</string>
 </resources>

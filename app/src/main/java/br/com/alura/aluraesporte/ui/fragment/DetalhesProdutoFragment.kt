@@ -37,29 +37,38 @@ class DetalhesProdutoFragment : BaseFragment() {
         )
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.menu_detalhes_produto, menu)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.menu_detalhes_produto_altera -> goToForm()
+            R.id.menu_detalhes_produto_remove -> removeProduct()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun removeProduct() {
+        viewModel.remove().observe(viewLifecycleOwner) {
+            controlador.popBackStack()
+        }
+    }
+
+    private fun goToForm() {
+        DetalhesProdutoFragmentDirections.actionDetalhesProdutoToFormularioProduto(produtoId)
+            .let(controlador::navigate)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         estadoAppViewModel.temComponentes = ComponentesVisuais(appBar = true)
         buscaProduto()
-        configuraBotaoComprar()
-    }
-
-    private fun configuraBotaoComprar() {
-        detalhes_produto_botao_comprar.setOnClickListener {
-            viewModel.produtoEncontrado.value?.let {
-                vaiParaPagamento()
-            }
-        }
-    }
-
-    private fun vaiParaPagamento() {
-        val direcao = DetalhesProdutoFragmentDirections
-            .acaoDetalhesProdutoParaPagamento(produtoId)
-        controlador.navigate(direcao)
     }
 
     private fun buscaProduto() {
-        viewModel.produtoEncontrado.observe(this, Observer {
+        viewModel.produtoEncontrado.observe(viewLifecycleOwner, Observer {
             it?.let { produto ->
                 detalhes_produto_nome.text = produto.nome
                 detalhes_produto_preco.text = produto.preco.formatParaMoedaBrasileira()
